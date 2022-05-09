@@ -108,11 +108,13 @@ if __name__ == "__main__":
             reset = sys.argv[1].lower() in ["reset", "r"]
         except IndexError:
             reset = False
+
+        songs, participants = load_data(reset)
         print_welcome(console)
 
         while True:
             print_title(console)
-            songs, participants = load_data(reset)
+            
             participant = pick_participant(participants)
             print_picking_singer(console, participant["PARTICIPANT"])
             participant_languages = participant["LANGUAGE"].split(" ")
